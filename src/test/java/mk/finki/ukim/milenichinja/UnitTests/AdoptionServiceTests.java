@@ -1,4 +1,4 @@
-package mk.finki.ukim.milenichinja.ServiceTests;
+package mk.finki.ukim.milenichinja.UnitTests;
 
 import mk.finki.ukim.milenichinja.Models.*;
 import mk.finki.ukim.milenichinja.Models.Enums.City;
@@ -15,15 +15,10 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.mockito.internal.matchers.Any;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.mockito.ArgumentMatchers.anyInt;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AdoptionServiceTests {

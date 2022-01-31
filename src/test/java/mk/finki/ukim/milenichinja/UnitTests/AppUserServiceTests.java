@@ -1,16 +1,10 @@
-package mk.finki.ukim.milenichinja.ServiceTests;
+package mk.finki.ukim.milenichinja.UnitTests;
 
 import mk.finki.ukim.milenichinja.Models.*;
 import mk.finki.ukim.milenichinja.Models.Enums.City;
-import mk.finki.ukim.milenichinja.Models.Enums.Gender;
-import mk.finki.ukim.milenichinja.Models.Enums.Status;
-import mk.finki.ukim.milenichinja.Models.Enums.Type;
 import mk.finki.ukim.milenichinja.Models.Exceptions.*;
-import mk.finki.ukim.milenichinja.Repository.Jpa.AdoptionRepository;
 import mk.finki.ukim.milenichinja.Repository.Jpa.AppUserRepository;
 import mk.finki.ukim.milenichinja.Repository.Jpa.CenterRepository;
-import mk.finki.ukim.milenichinja.Repository.Jpa.PetRepository;
-import mk.finki.ukim.milenichinja.Service.Impl.AdoptionServiceImpl;
 import mk.finki.ukim.milenichinja.Service.Impl.AppUserServiceImpl;
 import org.junit.Assert;
 import org.junit.Before;

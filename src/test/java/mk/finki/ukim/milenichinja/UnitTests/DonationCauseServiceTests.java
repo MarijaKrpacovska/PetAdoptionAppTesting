@@ -1,38 +1,24 @@
-package mk.finki.ukim.milenichinja.ServiceTests;
+package mk.finki.ukim.milenichinja.UnitTests;
 
-import mk.finki.ukim.milenichinja.Models.Center;
 import mk.finki.ukim.milenichinja.Models.DonationCause;
-import mk.finki.ukim.milenichinja.Models.Enums.City;
-import mk.finki.ukim.milenichinja.Models.Enums.Gender;
 import mk.finki.ukim.milenichinja.Models.Enums.Status;
-import mk.finki.ukim.milenichinja.Models.Enums.Type;
 import mk.finki.ukim.milenichinja.Models.Exceptions.DonationCauseNotFoundException;
 import mk.finki.ukim.milenichinja.Models.Exceptions.TransferSumInvalidException;
-import mk.finki.ukim.milenichinja.Models.Pet;
 import mk.finki.ukim.milenichinja.Repository.Jpa.DonationCauseRepository;
 import mk.finki.ukim.milenichinja.Repository.Jpa.DonationRepository;
 import mk.finki.ukim.milenichinja.Repository.Jpa.PetRepository;
-import mk.finki.ukim.milenichinja.Service.DonationCauseService;
 import mk.finki.ukim.milenichinja.Service.Impl.DonationCauseServiceImpl;
 import mk.finki.ukim.milenichinja.Service.ValuteService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.web.servlet.MockMvc;
 
-import java.time.ZonedDateTime;
 import java.util.List;
-import java.util.NoSuchElementException;
-
-import static org.mockito.ArgumentMatchers.anyInt;
 
 @RunWith(MockitoJUnitRunner.class)
 public class DonationCauseServiceTests {

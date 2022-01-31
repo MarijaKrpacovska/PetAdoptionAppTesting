@@ -43,7 +43,6 @@ public class CentersController {
     //MAIN GET PAGE
 
     //ADD EDIT DELETE
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/add-form")
     public String getAddCenterPage(Model model){
         //List<City> cityList = this.cityService.listAll();
@@ -52,7 +51,6 @@ public class CentersController {
         return "posts/addCenter";
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/edit-form/{id}")
     public String editPetPage(@PathVariable int id, Model model) {
         Center center = this.centerService.findById(id).get();
@@ -82,7 +80,6 @@ public class CentersController {
         }
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("/deleteCenter/{id}")
     public String deleteCenter(@PathVariable int id){
         try {

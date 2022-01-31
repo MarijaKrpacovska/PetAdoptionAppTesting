@@ -138,7 +138,6 @@ public class PetsController {
     //GET MAIN PAGES
 
     //EDIT ADD DELETE
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/edit-form/{id}")
     public String editPetPage(@PathVariable int id, Model model) {
         if (this.petService.findById(id).isPresent()) {
@@ -158,7 +157,6 @@ public class PetsController {
         return "redirect:/products?error=ProductNotFound";
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/add-form")
     public String addProductPage(Model model) {
         List<Center> milenichinja = this.centerService.listAll();
@@ -194,7 +192,6 @@ public class PetsController {
         return "redirect:/petsList";
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("/deletePet/{id}")
     public String deletePet(@PathVariable int id){
         petService.delete(id);

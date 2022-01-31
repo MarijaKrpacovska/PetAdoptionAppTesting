@@ -1,11 +1,10 @@
-package mk.finki.ukim.milenichinja.ServiceTests;
+package mk.finki.ukim.milenichinja.UnitTests;
 
 import mk.finki.ukim.milenichinja.Models.*;
 import mk.finki.ukim.milenichinja.Models.Enums.City;
 import mk.finki.ukim.milenichinja.Models.Enums.Gender;
 import mk.finki.ukim.milenichinja.Models.Enums.Status;
 import mk.finki.ukim.milenichinja.Models.Enums.Type;
-import mk.finki.ukim.milenichinja.Models.Exceptions.*;
 import mk.finki.ukim.milenichinja.Repository.Jpa.AdoptionRepository;
 import mk.finki.ukim.milenichinja.Repository.Jpa.AppUserRepository;
 import mk.finki.ukim.milenichinja.Repository.Jpa.PetRepository;
@@ -18,13 +17,10 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AdoptionServiceFilterTests {

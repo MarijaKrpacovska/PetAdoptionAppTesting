@@ -47,7 +47,6 @@ public class DonationCausesController {
     //MAIN GET PAGE
 
     //ADD EDIT DELETE
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/addDonationCause")
     public String getAddCausePage(@RequestParam(required = false) String error, Model model) {
         List<Pet> allPets = petService.listAll();
@@ -60,7 +59,6 @@ public class DonationCausesController {
         return "posts/addDonationCause.html";
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/edit-form/{id}")
     public String editPetPage(@PathVariable int id, Model model) {
         if (this.donationCauseService.findById(id).isPresent()) {
@@ -94,7 +92,6 @@ public class DonationCausesController {
         return "redirect:/causes";
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("/deleteCause/{id}")
     public String deleteCause(@PathVariable int id){
         donationCauseService.delete(id);
