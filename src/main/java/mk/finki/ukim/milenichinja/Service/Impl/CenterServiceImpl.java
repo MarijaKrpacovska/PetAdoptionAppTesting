@@ -64,23 +64,5 @@ public class CenterServiceImpl implements CenterService {
         return Optional.of(center);
     }
 
-    /*@Override
-    public Optional<Center> edit(int id, String address, int idCity, String url) {
-        Center center = this.centerRepository.findById(id).orElseThrow( () -> new CenterNotFoundException(id) );
-        City city = this.cityRepository.findById(idCity).orElseThrow( () -> new CityNotFoundException(idCity) );
-
-        center.setAddress(address);
-        center.setCity(city);
-        center.setUrl(url);
-
-        centerRepository.save(center);
-        return Optional.of(center);
-    }*/
-
-    /*@Override
-    public Optional<Center> save(String address, int idCity, String url) {
-        City city = cityRepository.findById(idCity).orElseThrow( () -> new CityNotFoundException(idCity) );
-        return Optional.of(this.centerRepository.save(new Center(address,city, url)));
-    }*/
 
 }

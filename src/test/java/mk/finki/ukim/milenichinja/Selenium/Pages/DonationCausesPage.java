@@ -32,9 +32,9 @@ public class DonationCausesPage extends BasePage   {
         super(driver);
     }
 
-    public static DonationPage to(WebDriver driver) {
+    public static DonationCausesPage to(WebDriver driver) {
         get(driver, "/causes");
-        return PageFactory.initElements(driver, DonationPage.class);
+        return PageFactory.initElements(driver, DonationCausesPage.class);
     }
 
     public void assertElemts(int causesNumber, int deleteButtons, int editButtons, int addButtons, int viewDonationsButton) {

@@ -1,20 +1,22 @@
 package mk.finki.ukim.milenichinja.Selenium;
 
-import mk.finki.ukim.milenichinja.Models.AppUser;
+import mk.finki.ukim.milenichinja.Models.*;
 import mk.finki.ukim.milenichinja.Models.Enums.City;
-import mk.finki.ukim.milenichinja.Models.Pet;
-import mk.finki.ukim.milenichinja.Models.Role;
-import mk.finki.ukim.milenichinja.Service.AdoptionService;
-import mk.finki.ukim.milenichinja.Service.AppUserService;
-import mk.finki.ukim.milenichinja.Service.CenterService;
-import mk.finki.ukim.milenichinja.Service.PetService;
+import mk.finki.ukim.milenichinja.Selenium.Pages.DonationCausesPage;
+import mk.finki.ukim.milenichinja.Selenium.Pages.DonationPage;
+import mk.finki.ukim.milenichinja.Selenium.Pages.LoginPage;
+import mk.finki.ukim.milenichinja.Service.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @ActiveProfiles("test")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
@@ -23,20 +25,31 @@ public class SeleniumDonationCausesTesting {
     AppUserService appUserService;
 
     @Autowired
-    PetService petService;
-
-    @Autowired
     CenterService centerService;
 
     @Autowired
-    AdoptionService adoptionService;
+    PetService petService;
+
+    @Autowired
+    DonationCauseService donationCauseService;
+
+    @Autowired
+    DonationService donationService;
+
+    @Autowired
+    ValuteService valuteService;
 
 
     private WebDriver driver;
 
-    private static Pet p1;
+    private static DonationCause dc1;
+    private static DonationCause dc2;
+    private static Valute valute;
     private static AppUser regularUser;
     private static AppUser adminUser;
+    private static Center center;
+    private static Pet p1;
+    List<Integer> l1 = new ArrayList<>();
 
     private static boolean dataInitialized = false;
 
@@ -67,9 +80,36 @@ public class SeleniumDonationCausesTesting {
             adminUser = appUserService.registerUser("u2","user2","user2",
                     City.Bitola,"u2@gmail.com","pass","pass", Role.ROLE_ADMIN);
 
-            //p1 = petService.save("p1",Type.DOG,"p1",Gender.FEMALE,"descr",c1.getId(),"url",adminUser,"2020-04-04").get();
+            center=centerService.save("addr",City.Skopje,"url").get();
+
+            dc1 = donationCauseService.save("des","url",l1,10.0,"name",10).get();
+            dc2 = donationCauseService.save("des","url",l1,10.0,"name",10).get();
+
+            valute=valuteService.save("MKD").get();
 
             dataInitialized = true;
         }
+    }
+
+    @Test
+    public void testDonationCausesPage() throws Exception {
+        //unauthorized
+        DonationCausesPage donationCausesPage = DonationCausesPage.to(this.driver);
+        donationCausesPage.assertElemts(2,0,0,0,0);
+
+        //logged in as user
+        LoginPage loginPage = LoginPage.openLoginPage(this.driver);
+        LoginPage.login(this.driver, loginPage, regularUser.getUsername(), "pass");
+        donationCausesPage = DonationCausesPage.to(this.driver);
+        Thread.sleep(2000);
+        donationCausesPage.assertElemts(2,0,0,0,0);
+
+        //logged in as admin
+        loginPage = LoginPage.openLoginPage(this.driver);
+        LoginPage.login(this.driver, loginPage, adminUser.getUsername(), "pass");
+        donationCausesPage = DonationCausesPage.to(this.driver);
+        Thread.sleep(2000);
+        donationCausesPage.assertElemts(2,2,2,1,1);
+
     }
 }
