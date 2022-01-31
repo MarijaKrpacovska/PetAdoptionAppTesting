@@ -62,10 +62,10 @@ public class AdoptionServiceImpl implements AdoptionService {
         List<Adoption> emptySearchResult = new ArrayList<>();
 
         if(id != null && !username.equals("") ) {
-            if(!this.petRepository.findById(id).isPresent()){
+            if(!this.petRepository.findById(id).isEmpty()){
                 return emptySearchResult;
             }
-            if(!this.appUserRepository.findByUsername(username).isPresent()){
+            if(!this.appUserRepository.findByUsername(username).isEmpty()){
                 return emptySearchResult;
             }
             Pet pet = this.petRepository.findById(id).orElseThrow( () -> new PetNotFoundException(id));
@@ -73,14 +73,14 @@ public class AdoptionServiceImpl implements AdoptionService {
             return this.adoptionRepository.findAllByUserAndPet(user, pet);
         }
         else if(id != null && username.equals("")){
-            if(!this.petRepository.findById(id).isPresent()){
+            if(!this.petRepository.findById(id).isEmpty()){
                 return emptySearchResult;
             }
             Pet pet = this.petRepository.findById(id).orElseThrow( () -> new PetNotFoundException(id));
             return this.adoptionRepository.findAllByPet(pet);
         }
         else if(id == null && !username.equals("")) {
-            if(!this.appUserRepository.findByUsername(username).isPresent()){
+            if(!this.appUserRepository.findByUsername(username).isEmpty()){
                 return emptySearchResult;
             }
             AppUser user  = this.appUserRepository.findByUsername(username).orElseThrow( () -> new UsernameNotFoundException(username));
