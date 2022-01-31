@@ -36,7 +36,7 @@ public class ValuteServiceImpl implements ValuteService {
     @Override
     public double ConvertToMKD(double value, Valute valute) {
         double convertValue = valute.getValueToMKD();
-        double newValue = value / convertValue;
+        double newValue = value * convertValue;
         return newValue;
     }
 }
