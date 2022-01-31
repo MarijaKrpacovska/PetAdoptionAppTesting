@@ -16,7 +16,7 @@
                 <!-------------------------------------------RED OD 4 DCS------------------------------------------->
                 <div class="media-container-row">
                     <!-------------------------------------------EDEN DC------------------------------------------->
-                    <div th:each="cause : ${causesList}" class="card p-4 col-12 col-md-6 col-lg-4 edenCentar">
+                    <div th:each="cause : ${causesList}" class="card p-4 col-12 col-md-6 col-lg-4 edenDC">
                         <!------------PICTURE + SHORT INFO-------------->
 
                         <!------------ACTIVE-------------->
@@ -102,7 +102,7 @@
                             <!------------DELETE-------------->
 
                             <!------------EDIT-------------->
-                            <a th:href="@{'/causes/edit-form/{id}' (id=${cause.getId()})}" sec:authorize="hasRole('ROLE_ADMIN')">
+                            <a class="edit" th:href="@{'/causes/edit-form/{id}' (id=${cause.getId()})}" sec:authorize="hasRole('ROLE_ADMIN')">
                                 <i>Edit</i>
                             </a>
                             <!------------EDIT-------------->
@@ -117,7 +117,7 @@
 
             <!-----------------------------------------ADD CAUSE----------------------------------------->
             <div class="add_center_button_div" sec:authorize="hasRole('ROLE_ADMIN')" >
-                <a class="add_center_button" href="/causes/addDonationCause">
+                <a class="addDC" href="/causes/addDonationCause">
                     ADD CAUSE
                 </a>
             </div>
@@ -125,7 +125,7 @@
 
             <!-------------------------------------VIEW DONATIONS------------------------------------->
             <div class="add_center_button_div" sec:authorize="hasRole('ROLE_ADMIN')">
-                <a class="add_center_button" href="/allDonations">
+                <a class="allDonatons" href="/allDonations">
                     VIEW DONATIONS
                 </a>
             </div>

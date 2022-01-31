@@ -13,7 +13,11 @@ public interface ValuteService {
 
     List<Valute> listAll();
 
+
+
     Optional<Valute> findByShortName(String valute);
+
+    Optional<Valute> save(String valute);
 
     double ConvertToMKD(double value, Valute valute);
 

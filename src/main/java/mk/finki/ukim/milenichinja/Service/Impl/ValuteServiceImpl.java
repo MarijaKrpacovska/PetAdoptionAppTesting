@@ -28,6 +28,12 @@ public class ValuteServiceImpl implements ValuteService {
     }
 
     @Override
+    public Optional<Valute> save(String valute) {
+        Valute valute1= new Valute(valute,valute,valute,0);
+        return Optional.of(valuteRepository.save(valute1));
+    }
+
+    @Override
     public double ConvertToMKD(double value, Valute valute) {
         double convertValue = valute.getValueToMKD();
         double newValue = value / convertValue;

@@ -14,7 +14,7 @@
         <header th:replace="fragments/navbar.html"/>
         <div class="container">
 
-            <a class="add_center_button" href="/causes">
+            <a class="add_center_button wwudf" href="/causes">
                 WHAT WE USE THE DONATIONS FOR
             </a>
 
@@ -22,17 +22,17 @@
                 <h2 class="form-signin-heading">Donate</h2>
                 <p>
                     <label for="sum" class="sr-only">sum</label>
-                    <input type="text" id="sum" name="sum" class="form-control" placeholder="sum" required=""
+                    <input type="number" id="sum" name="sum" class="form-control" placeholder="sum" required=""
                            autofocus="">
                 </p>
                 <p>
                     <label for="cardNumber" class="sr-only">card number</label>
-                    <input type="text" id="cardNumber" name="cardNumber" class="form-control" placeholder="cardNumber" required=""
+                    <input type="number" id="cardNumber" name="cardNumber" class="form-control" placeholder="cardNumber" required=""
                            autofocus="">
                 </p>
                 <div class="form-group">
-                    <label>Cause</label>
-                    <select name="valute" class="form-control">
+                    <label>Valute</label>
+                    <select name="valute" id="valuteSelect" class="form-control">
                         <option th:each="val : ${valutes}"
                                 th:value="${val.getShortName()}"
                                 th:text="${val.getShortName()}"
@@ -46,7 +46,7 @@
                     <input type="text" id="valute" name="valute" class="form-control" placeholder="valute" required=""
                            autofocus="">
                 </p>-->
-                <select name="paymentMethod" class="form-control">
+                <select name="paymentMethod" id="paymentMethod" class="form-control">
                     <option th:each="pm : ${paymentMethods}"
                             th:value="${pm.name()}"
                             th:text="${pm.name()}">
@@ -55,7 +55,7 @@
                 </select>
                 <div class="form-group">
                     <label>Cause</label>
-                    <select name="donationCauseId" class="form-control">
+                    <select name="donationCauseId" id="dcId" class="form-control">
                         <option th:each="cause : ${causesList}"
                                 th:value="${cause.getId()}"
                                 th:text="${cause.getName()}"
@@ -65,7 +65,7 @@
                     </select>
                 </div>
 
-                <button class="btn btn-lg btn-primary btn-block" style="width: 120px" type="submit">DONATE</button>
+                <button class="btn btn-lg btn-primary btn-block donate_button" style="width: 120px" type="submit">DONATE</button>
             </form>
 
         </div>
