@@ -111,22 +111,4 @@ public class PetIntegrationTests {
                 .andExpect(MockMvcResultMatchers.view().name("posts/addPet"));
     }
 
-//    @Test
-//    public void testAdd() throws Exception
-//    {
-//        MockHttpServletRequestBuilder userRequest = MockMvcRequestBuilders.post("/petsList/add")
-//                .param("ime", "name")
-//                .param("vid", "DOG")
-//                .param("rasa", "rasa")
-//                .param("pol", "FEMALE")
-//                .param("opis","opis")
-//                .param("id_centar",c1.getId().toString())
-//                .param("DoB","2020-04-04")
-//                .param("url_slika","url");
-//
-//        this.mockMvc.perform(userRequest)
-//                .andDo(MockMvcResultHandlers.print())
-//                .andExpect(MockMvcResultMatchers.status().is3xxRedirection())
-//                .andExpect(MockMvcResultMatchers.redirectedUrl("/petsList"));
-//    }
 }

@@ -2,6 +2,8 @@ package mk.finki.ukim.milenichinja.Service.Impl;
 
 import mk.finki.ukim.milenichinja.Models.*;
 import mk.finki.ukim.milenichinja.Models.Enums.PaymentMethod;
+import mk.finki.ukim.milenichinja.Models.Exceptions.DonationCauseCannotBeNullException;
+import mk.finki.ukim.milenichinja.Models.Exceptions.DonationCauseNotFoundException;
 import mk.finki.ukim.milenichinja.Repository.Jpa.DonationCauseRepository;
 import mk.finki.ukim.milenichinja.Repository.Jpa.DonationRepository;
 import mk.finki.ukim.milenichinja.Service.DonationService;
@@ -31,19 +33,25 @@ public class DonationServiceImpl implements DonationService {
     public Optional<Donation> save(AppUser donator, double sum, PaymentMethod paymentMethod, Long cardNumber, Valute valute, DonationCause donationCause) {
         ZonedDateTime donationTime = ZonedDateTime.now();
 
-        this.updateDCCurrentSum(donationCause, sum);
+        if(donationCause!=null) {
+            this.updateDCCurrentSum(donationCause, sum);
 
-        Donation donation = new Donation(sum,cardNumber,donationTime,paymentMethod,donator,donationCause,donationCause,valute);
-        return Optional.of( this.donationRepository.save(donation) );
+            Donation donation = new Donation(sum, cardNumber, donationTime, paymentMethod, donator, donationCause, donationCause, valute);
+            return Optional.of(this.donationRepository.save(donation));
+        }
+        else throw new DonationCauseCannotBeNullException();
     }
 
     @Override
     public Optional<DonationCause> updateDCCurrentSum(DonationCause donationCause, double sum) {
-        double newSum = donationCause.getCurrentSum();
-        newSum += sum;
-        donationCause.setCurrentSum(newSum);
-        donationCauseRepository.save(donationCause);
-        return Optional.of(donationCause);
+        if(donationCause!=null){
+            double newSum = donationCause.getCurrentSum();
+            newSum += sum;
+            donationCause.setCurrentSum(newSum);
+            donationCauseRepository.save(donationCause);
+            return Optional.of(donationCause);
+        }
+        else throw new DonationCauseCannotBeNullException();
     }
 
 }
