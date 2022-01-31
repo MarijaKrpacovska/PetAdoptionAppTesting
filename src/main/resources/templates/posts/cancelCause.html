@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Cancel cause</title>
+        <meta charset="UTF-8"/>
+        <title>Register</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    </head>
+    <body>
+        <header th:replace="fragments/navbar.html"/>
+        <div class="container">
+            <br>
+            <h1 class="form-signin-heading">Manage Rols</h1>
+
+            <form class="form-signin mt-xl-5" method="post" action="/causes/cancel">
+                <input id="id" type="hidden" name="id" th:value="(${cause} != null ? ${cause.getId()} : '')" >
+            <div class="row">
+                <div class="col-md-6" style="border-right: solid darkgray 0.3px">
+                    <h2 class="form-signin-heading">Add admin:</h2>
+                    <div class="form-group">
+                        <label>Pick user:</label>
+                        <select name="idTransfer" class="form-control">
+                            <option value="">All</option>
+                            <option th:each="c : ${causes}"
+                                    th:value="${c.getId()}"
+                                    th:text="${c.getName()}">
+                            </option>
+                        </select>
+                    </div>
+
+                </div>
+
+
+            </div>
+                <hr />
+                <br />
+                <br />
+                <button style="width: 100px; margin: auto" class="btn btn-lg btn-primary btn-block" type="submit">Done</button>
+            </form>
+
+        </div>
+        <footer th:replace="fragments/footer.html"/>
+    </body>
+</html>
